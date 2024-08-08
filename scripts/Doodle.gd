@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -750.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var initialJump = true
 var type = "character"
+var last_collision
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,3 +29,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, 30)
 
 	move_and_slide()
+	if get_last_slide_collision():
+		last_collision = get_slide_collision(0).get_collider()
+		if last_collision.type == "breakable" and velocity.y < 700:
+			last_collision.queue_free()

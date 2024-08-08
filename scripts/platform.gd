@@ -4,6 +4,7 @@ var type
 var sprite
 var normal_texture = preload("res://sprites/mc.jpg")
 var breakable_texture = preload("res://sprites/un-patriot.jpg")
+var break_state = false
 # Called when the node enters the scene tree for the first time.
 
 func initialise(x, y):
@@ -20,8 +21,3 @@ func initialise(x, y):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_area_2d_body_entered(body):
-	if type == "breakable" and body.type == "character":
-		self.queue_free()

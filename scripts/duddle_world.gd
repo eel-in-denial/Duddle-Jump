@@ -29,7 +29,6 @@ func _process(delta):
 		create_platforms()
 
 func create_platforms():
-	print("hello")
 	for i in range(plat_per_screen):
 		if (Global.random.randf()) <= plat_chance:
 			platform_instance = platform_scene.instantiate()
