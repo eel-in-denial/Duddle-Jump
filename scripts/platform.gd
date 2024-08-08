@@ -2,8 +2,8 @@ extends StaticBody2D
 
 var type
 var sprite
-var normal_texture = preload("res://sprites/mc.jpg")
-var breakable_texture = preload("res://sprites/un-patriot.jpg")
+var normal_texture = preload("res://sprites/normal_plat.png")
+var breakable_texture = preload("res://sprites/breaking_plat.png")
 var break_state = false
 # Called when the node enters the scene tree for the first time.
 
