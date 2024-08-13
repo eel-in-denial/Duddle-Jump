@@ -7,14 +7,17 @@ const JUMP_VELOCITY = -1200.0
 var initialJump = true
 var type = "character"
 var last_collision
+var jetpack_timer = 0
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and jetpack_timer == 0:
 		velocity.y += Global.gravity * delta
-
+	elif jetpack_timer > 0:
+		jetpack_timer -= 1
+		velocity.y = JUMP_VELOCITY*2
 	# Handle jump.
-	if is_on_floor():
+	elif is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	if initialJump:
 		velocity.y = JUMP_VELOCITY
@@ -37,3 +40,5 @@ func _physics_process(delta):
 		last_collision = get_slide_collision(0).get_collider()
 		if last_collision.type == "breakable" and velocity.y < 700:
 			last_collision.queue_free()
+func jetpack():
+	jetpack_timer = 100
