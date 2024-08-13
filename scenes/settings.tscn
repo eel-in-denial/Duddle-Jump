@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3rh2ugmmsfmh"]
+
+[ext_resource type="Texture2D" uid="uid://dwa8k6p2u1yva" path="res://sprites/background.png" id="1_f2qny"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_f7gfl"]
+[ext_resource type="Texture2D" uid="uid://b7tpigq5ltc4v" path="res://sprites/blackbars.png" id="2_x2b0v"]
+
+[node name="settings" type="Node2D"]
+script = ExtResource("1_f7gfl")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(978, -47462)
+texture = ExtResource("1_f2qny")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 100000)
+metadata/_edit_lock_ = true
+
+[node name="Sides" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("2_x2b0v")
+metadata/_edit_lock_ = true
+
+[node name="back" type="Button" parent="."]
+offset_left = 1148.0
+offset_top = 960.0
+offset_right = 1272.0
+offset_bottom = 1037.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Settings" type="Label" parent="."]
+offset_left = 806.0
+offset_top = 40.0
+offset_right = 1115.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+
+[node name="Volume" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 160.0
+offset_right = 886.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+
+[node name="Ads" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 400.0
+offset_right = 886.0
+offset_bottom = 473.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Ads"
+
+[node name="Adssub" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 470.0
+offset_right = 994.0
+offset_bottom = 543.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Support the creator!"
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 710.0
+offset_top = 230.0
+offset_right = 1210.0
+offset_bottom = 280.0
+step = 10.0
+
+[node name="HSlider2" type="HSlider" parent="."]
+offset_left = 710.0
+offset_top = 330.0
+offset_right = 1210.0
+offset_bottom = 380.0
+step = 10.0
+
+[node name="adson" type="Button" parent="."]
+offset_left = 695.0
+offset_top = 545.0
+offset_right = 857.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 40
+text = "Enabled"
+
+[node name="adson2" type="Button" parent="."]
+offset_left = 1001.0
+offset_top = 550.0
+offset_right = 1175.0
+offset_bottom = 613.0
+theme_override_font_sizes/font_size = 40
+text = "Disabled"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

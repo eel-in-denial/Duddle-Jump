@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlbme713o6b20"]
+
+[ext_resource type="Texture2D" uid="uid://dwa8k6p2u1yva" path="res://sprites/background.png" id="1_idu6q"]
+[ext_resource type="Script" path="res://scripts/achievements.gd" id="1_l5snb"]
+[ext_resource type="Texture2D" uid="uid://b7tpigq5ltc4v" path="res://sprites/blackbars.png" id="2_rnbrc"]
+
+[node name="achievements" type="Node2D"]
+script = ExtResource("1_l5snb")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(978, -47462)
+texture = ExtResource("1_idu6q")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 100000)
+metadata/_edit_lock_ = true
+
+[node name="Sides" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("2_rnbrc")
+metadata/_edit_lock_ = true
+
+[node name="back" type="Button" parent="."]
+offset_left = 1148.0
+offset_top = 960.0
+offset_right = 1272.0
+offset_bottom = 1037.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="achievements boxes" type="Node2D" parent="."]
+
+[node name="VSlider" type="VSlider" parent="achievements boxes"]
+offset_left = 1322.0
+offset_top = 1056.0
+offset_right = 1390.0
+offset_bottom = 2096.0
+rotation = 3.14159
+
+[node name="Settings" type="Label" parent="."]
+offset_top = 40.0
+offset_right = 1920.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Achievements"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

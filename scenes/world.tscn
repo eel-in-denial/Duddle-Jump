@@ -8,7 +8,7 @@
 [node name="Duddle World" type="Node2D"]
 script = ExtResource("1_1xc7p")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background2" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(978, -47462)

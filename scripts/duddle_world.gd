@@ -10,6 +10,8 @@ var plat_chance = 0.9
 var platform_instance
 var plat_generate_thresh= 0
 var visible_plat_thresh = Global.screen_height
+var gameestate = "play"
+var death_uitimer = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = $Camera
@@ -19,17 +21,35 @@ func _ready():
 	create_platforms()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if doodle.position.y < camera.position.y:
+	if gameestate == "dead":
+		camera.position.y = doodle.position.y
+		death_uitimer -= 1
+		if death_uitimer == 0:
+			gameestate = "menu"
+	elif gameestate == "menu":
+		death_uitimer -= 1
+		if death_uitimer == -30:
+			doodle.queue_free()
+	elif doodle.position.y < camera.position.y:
 		camera.position.y = doodle.position.y
 		visible_plat_thresh = camera.position.y + Global.screen_height/2
 		score.text = str(int(40-doodle.position.y/5))
 		for p in platform_container.get_children():
 			if p.position.y >= visible_plat_thresh:
 				p.queue_free()
-	if doodle.position.y <= plat_generate_thresh:
+	elif doodle.position.y > camera.position.y + Global.screen_height/2:
+		doodle.movement = false
+		gameestate = "dead"
+		death_uitimer = 60
+		doodle.velocity.x = 0
+		camera.position.y = doodle.position.y
+	if gameestate == "play" and doodle.position.y <= plat_generate_thresh:
 		plat_generate_thresh -= Global.screen_height*2
 		plat_chance -= 0.01
 		create_platforms()
+	
+	
+	
 
 func create_platforms():
 	for i in range(plat_per_screen):

@@ -42,7 +42,7 @@ func initialise(x, y):
 		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "normal"]
 	else:
 		plat_type = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "crumbling", "crumbling", "crumbling"]
-		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "normal"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
 	type = plat_type[Global.random.randi_range(0, 9)]
 	if type == "normal":
 		sprite.set_texture(normal_texture)
