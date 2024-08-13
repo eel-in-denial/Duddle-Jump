@@ -3,6 +3,7 @@ extends Node2D
 var platform_scene = preload("res://scenes/platform.tscn")
 var camera
 var doodle
+var score
 var platform_container
 var plat_per_screen = 40
 var plat_chance = 0.9
@@ -14,18 +15,20 @@ func _ready():
 	camera = $Camera
 	doodle = $Doodle
 	platform_container = $Platforms
+	score = $Control/Label
 	create_platforms()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if doodle.position.y < camera.position.y:
 		camera.position.y = doodle.position.y
 		visible_plat_thresh = camera.position.y + Global.screen_height/2
+		score.text = str(int(40-doodle.position.y/5))
 		for p in platform_container.get_children():
 			if p.position.y >= visible_plat_thresh:
 				p.queue_free()
 	if doodle.position.y <= plat_generate_thresh:
 		plat_generate_thresh -= Global.screen_height*2
-		plat_chance -= 0.05
+		plat_chance -= 0.01
 		create_platforms()
 
 func create_platforms():

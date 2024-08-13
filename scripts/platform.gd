@@ -16,13 +16,33 @@ var spring_collision
 var jetpack
 var jetpack_collision
 var direction = 3
+var plat_type
+var plat_item
 # Called when the node enters the scene tree for the first time.
 
 func initialise(x, y):
 	sprite = $Sprite2D
-	var plat_type = ["normal", "normal", "normal", "normal", "normal", "breakable", "crumbling", "moving", "ver_moving", "switching"]
-	var plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
+	plat_type = ["normal", "normal", "normal", "normal", "normal", "breakable", "crumbling", "moving", "ver_moving", "switching"]
+	plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
 	self.position = Vector2(x, y)
+	if y < -100000:
+		plat_type = ["normal", "normal", "normal", "normal", "normal", "breakable", "crumbling", "moving", "ver_moving", "switching"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
+	elif y < -80000:
+		plat_type = ["normal", "normal", "normal", "moving", "moving", "breakable", "breakable", "moving", "moving", "breakable"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
+	elif y < -60000:
+		plat_type = ["normal", "normal", "normal", "normal", "moving", "breakable", "crumbling", "moving", "moving", "breakable"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "jetpack"]
+	elif y < -40000:
+		plat_type = ["normal", "normal", "normal", "normal", "normal", "moving", "crumbling", "moving", "moving", "breaking"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "jetpack"]
+	elif y < -20000:
+		plat_type = ["normal", "normal", "normal", "normal", "normal", "normal", "crumbling", "moving", "crumbling", "moving"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "normal"]
+	else:
+		plat_type = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "crumbling", "crumbling", "crumbling"]
+		plat_item = ["normal", "normal", "normal", "normal", "normal", "normal", "normal", "spring", "spring", "normal"]
 	type = plat_type[Global.random.randi_range(0, 9)]
 	if type == "normal":
 		sprite.set_texture(normal_texture)
@@ -77,5 +97,6 @@ func _on_spring_body_entered(body):
 
 
 func _on_jetpack_body_entered(body):
-	if body.type == "character":
+	if body.type == "character" and body.jetpack_timer == 0:
 		body.jetpack()
+		jetpack.visible = false

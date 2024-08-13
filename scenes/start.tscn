@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://u3jvtq7iq8a3"]
+
+[ext_resource type="Texture2D" uid="uid://dwa8k6p2u1yva" path="res://sprites/background.png" id="1_514lf"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_iontj"]
+[ext_resource type="Texture2D" uid="uid://b7tpigq5ltc4v" path="res://sprites/blackbars.png" id="2_8lb7c"]
+[ext_resource type="PackedScene" uid="uid://cfn1kmw82cthc" path="res://scenes/doodle.tscn" id="3_8tj3m"]
+[ext_resource type="PackedScene" uid="uid://b5ortcmqccxen" path="res://scenes/platform.tscn" id="4_4feqr"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_iontj")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(978, -47462)
+texture = ExtResource("1_514lf")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 100000)
+
+[node name="Sides" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("2_8lb7c")
+
+[node name="Doodle" parent="." instance=ExtResource("3_8tj3m")]
+position = Vector2(739, 815)
+
+[node name="platform" parent="." instance=ExtResource("4_4feqr")]
+position = Vector2(741, 936)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 621.0
+offset_top = 223.0
+offset_right = 1244.0
+offset_bottom = 360.0
+rotation = -0.261799
+theme_override_colors/font_color = Color(0.576471, 0, 0.780392, 1)
+theme_override_font_sizes/font_size = 100
+text = "Duddle Jump"
+
+[node name="play" type="Button" parent="."]
+offset_left = 984.0
+offset_top = 317.0
+offset_right = 1189.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 986.0
+offset_top = 417.0
+offset_right = 1191.0
+offset_bottom = 494.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="settings" type="Button" parent="."]
+offset_left = 1207.0
+offset_top = 947.0
+offset_right = 1280.0
+offset_bottom = 1024.0
+theme_override_font_sizes/font_size = 50
+text = "S"
+
+[node name="achievements" type="Button" parent="."]
+offset_left = 1093.0
+offset_top = 948.0
+offset_right = 1170.0
+offset_bottom = 1025.0
+theme_override_font_sizes/font_size = 50
+text = "A"
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

@@ -27,3 +27,14 @@ position = Vector2(960, 200)
 [node name="Sides" type="Sprite2D" parent="Camera"]
 texture_filter = 1
 texture = ExtResource("4_gxcic")
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 960.0
+offset_top = 30.0
+offset_right = 1006.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "0"
