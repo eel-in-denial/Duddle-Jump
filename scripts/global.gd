@@ -1,8 +1,10 @@
 extends Node
 var random = RandomNumberGenerator.new()
 
-var screen_width = 450
-var screen_height = 750
+var screen_width = 1920
+var screen_height = 1080
+
+var gravity = 2000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

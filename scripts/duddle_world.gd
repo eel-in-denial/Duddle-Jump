@@ -32,7 +32,10 @@ func create_platforms():
 	for i in range(plat_per_screen):
 		if (Global.random.randf()) <= plat_chance:
 			platform_instance = platform_scene.instantiate()
-			platform_instance.initialise(Global.random.randf_range(0, Global.screen_width), plat_generate_thresh+Global.screen_height - i*Global.screen_height/20)
+			platform_instance.initialise(Global.random.randf_range(610, Global.screen_width-610), plat_generate_thresh+Global.screen_height - i*Global.screen_height/20)
 			platform_container.add_child(platform_instance)
-	
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 

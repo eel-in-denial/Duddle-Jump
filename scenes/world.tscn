@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bklxacsige0dr"]
+[gd_scene load_steps=5 format=3 uid="uid://bklxacsige0dr"]
 
 [ext_resource type="Script" path="res://scripts/duddle_world.gd" id="1_1xc7p"]
 [ext_resource type="PackedScene" uid="uid://cfn1kmw82cthc" path="res://scenes/doodle.tscn" id="2_1t0ia"]
 [ext_resource type="Texture2D" uid="uid://dwa8k6p2u1yva" path="res://sprites/background.png" id="3_cpo2q"]
+[ext_resource type="Texture2D" uid="uid://b7tpigq5ltc4v" path="res://sprites/blackbars.png" id="4_gxcic"]
 
 [node name="Duddle World" type="Node2D"]
 script = ExtResource("1_1xc7p")
@@ -18,6 +19,11 @@ region_rect = Rect2(0, 0, 2000, 100000)
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Doodle" parent="." instance=ExtResource("2_1t0ia")]
+position = Vector2(960, 540)
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(225, 375)
+position = Vector2(960, 200)
+
+[node name="Sides" type="Sprite2D" parent="Camera"]
+texture_filter = 1
+texture = ExtResource("4_gxcic")
